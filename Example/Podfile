@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'SwiftUICalendar_Example' do
+  pod 'SwiftUICalendar', :path => '../'
+
+  target 'SwiftUICalendar_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
