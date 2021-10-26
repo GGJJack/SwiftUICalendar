@@ -42,6 +42,7 @@ CalendarView() { date in
 <details>
 <summary>Show example code</summary>
 <p>
+
 ```swift
 struct BasicUseView: View {
     @ObservedObject var controller: CalendarController = CalendarController(orientation: .vertical)
@@ -86,6 +87,7 @@ struct BasicUseView: View {
     }
 }
 ```
+
 </p>
 </details>
 
@@ -96,6 +98,7 @@ struct BasicUseView: View {
 <details>
 <summary>Show example code</summary>
 <p>
+
 ```swift
 struct CalendarScrollView: View {
     @ObservedObject var controller: CalendarController = CalendarController()
@@ -146,6 +149,7 @@ struct CalendarScrollView: View {
     }
 }
 ```
+
 </p>
 </details>
 
@@ -157,6 +161,7 @@ struct CalendarScrollView: View {
 <summary>Show example code</summary>
 <p>
 ```swift
+
 struct EmbedHeaderView: View {
     
     @ObservedObject var controller: CalendarController = CalendarController()
@@ -199,6 +204,7 @@ struct EmbedHeaderView: View {
     }
 }
 ```
+
 </p>
 </details>
 
@@ -209,6 +215,7 @@ struct EmbedHeaderView: View {
 <details>
 <summary>Show example code</summary>
 <p>
+
 ```swift
 extension YearMonthDay: Hashable {
     public func hash(into hasher: inout Hasher) {
@@ -312,6 +319,7 @@ struct InformationView: View {
     }
 }
 ```
+
 </p>
 </details>
 
@@ -322,7 +330,9 @@ struct InformationView: View {
 <details>
 <summary>Show example code</summary>
 <p>
+
 ```swift
+
 struct SelectionView: View {
     @ObservedObject var controller: CalendarController = CalendarController()
     @State var focusDate: YearMonthDay? = YearMonthDay.current
@@ -356,8 +366,10 @@ struct SelectionView: View {
     }
 }
 ```
+
 </p>
 </details>
+
 
 ## Struct
 
