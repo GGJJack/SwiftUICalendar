@@ -442,8 +442,6 @@ let diff = nextMonth.diffMonth(value: date) // 2021/11 - 2021/10 = 1
 
 let components: DateComponents = nextMonth.toDateComponents()
 
-let 
-
 ```
 
 ### YearMonthDay
