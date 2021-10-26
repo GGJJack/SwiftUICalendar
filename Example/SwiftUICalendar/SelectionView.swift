@@ -18,7 +18,7 @@ struct SelectionView: View {
     var body: some View {
         GeometryReader { reader in
             VStack {
-                CalendarView(controller, header: { week in
+                CalendarView2(controller, header: { week in
                     GeometryReader { geometry in
                         Text(week.shortString)
                             .font(.subheadline)

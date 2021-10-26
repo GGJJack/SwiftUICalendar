@@ -31,7 +31,7 @@ struct EmbedHeaderView: View {
                     }
                     .padding(8)
                 }
-                CalendarView(controller, header: { week in
+                CalendarView2(controller, header: { week in
                     GeometryReader { geometry in
                         Text(week.shortString)
                             .font(.subheadline)

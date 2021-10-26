@@ -46,7 +46,7 @@ struct CalendarScrollView: View {
                             .frame(width: reader.size.width / 7)
                     }
                 }
-                CalendarView(controller) { date in
+                CalendarView2(controller) { date in
                     GeometryReader { geometry in
                         Text("\(date.day)")
                             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
