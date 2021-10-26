@@ -27,7 +27,7 @@ struct BasicUseView: View {
                             .frame(width: reader.size.width / 7)
                     }
                 }
-                CalendarView2(controller) { date in
+                CalendarView(controller) { date in
                     GeometryReader { geometry in
                         ZStack(alignment: .center) {
                             if date.isToday {

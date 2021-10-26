@@ -55,7 +55,7 @@ struct InformationView: View {
     var body: some View {
         GeometryReader { reader in
             VStack {
-                CalendarView2(header: { week in
+                CalendarView(header: { week in
                     GeometryReader { geometry in
                         Text(week.shortString)
                             .font(.subheadline)

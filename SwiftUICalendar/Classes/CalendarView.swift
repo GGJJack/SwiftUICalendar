@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-public struct CalendarView2<CalendarCell: View, HeaderCell: View>: View {
+public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
     
     private var gridItem: [GridItem] = Array(repeating: .init(.flexible(), spacing: 0), count: 7) // columnCount
     private let component: (YearMonthDay) -> CalendarCell
@@ -85,9 +85,9 @@ public struct CalendarView2<CalendarCell: View, HeaderCell: View>: View {
     }
 }
 
-struct CalendarView2_Previews: PreviewProvider {
+struct CalendarView_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarView2(CalendarController()) { date in
+        CalendarView(CalendarController()) { date in
             GeometryReader { geometry in
                 Text("\(String(date.year))/\(date.month)/\(date.day)")
                     .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
