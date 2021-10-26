@@ -38,6 +38,8 @@ internal struct InfinitePagerView<Content: View>: View {
             if controller.orientation == .horizontal {
                 TabView(selection: $controller.position) {
                     content(proxy)
+                        .contentShape(Rectangle())
+                        .gesture(controller.isLocked ? DragGesture() : nil)
                 }
                 .frame(width: proxy.size.width, height: proxy.size.height)
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -48,6 +50,8 @@ internal struct InfinitePagerView<Content: View>: View {
                         .frame(width: proxy.size.width, height: proxy.size.height)
                         .rotationEffect(.degrees(-90))
                         .rotation3DEffect(flippingAngle, axis: (x: 1, y: 0, z: 0))
+                        .contentShape(Rectangle())
+                        .gesture(controller.isLocked ? DragGesture() : nil)
                 }
                 .frame(width: proxy.size.height, height: proxy.size.width)
                 .rotation3DEffect(flippingAngle, axis: (x: 1, y: 0, z: 0))

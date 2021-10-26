@@ -30,6 +30,9 @@ struct MainView: View {
                 NavigationLink(destination: SelectionView()) {
                     Text("Selection")
                 }
+                NavigationLink(destination: InformationWithSelectionView()) {
+                    Text("Information + Selection")
+                }
             }
             .navigationBarTitle("Home")
         }

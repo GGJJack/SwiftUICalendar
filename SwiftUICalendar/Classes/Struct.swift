@@ -5,6 +5,8 @@
 //  Created by GGJJack on 2021/10/21.
 //
 
+import Foundation
+
 public enum Week: Int, CaseIterable {
     case sun = 0
     case mon = 1
@@ -18,6 +20,12 @@ public enum Week: Int, CaseIterable {
         get {
             return DateFormatter().shortWeekdaySymbols[self.rawValue]
         }
+    }
+    
+    public func shortString(locale: Locale) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = locale
+        return formatter.shortWeekdaySymbols[self.rawValue]
     }
 }
 

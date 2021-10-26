@@ -18,11 +18,22 @@ struct CalendarScrollView: View {
             VStack(alignment: .center, spacing: 0) {
                 HStack(alignment: .center, spacing: 0) {
                     Spacer()
-                    Button("Older") {
-                        controller.scrollTo(YearMonth(year: 1500, month: 1), isAnimate: true)
+                    Button("Drag Lock") {
+                        controller.isLocked = true
                     }
                     Spacer()
-                    Button("Today") {
+                    Button("Drag Unlock") {
+                        controller.isLocked = false
+                    }
+                    Spacer()
+                }
+                HStack(alignment: .center, spacing: 0) {
+                    Spacer()
+                    Button("Older") {
+                        controller.scrollTo(YearMonth(year: 1000, month: 1), isAnimate: true)
+                    }
+                    Spacer()
+                    Button("Today Fast") {
                         controller.scrollTo(YearMonth.current, isAnimate: false)
                     }
                     Spacer()
@@ -31,7 +42,7 @@ struct CalendarScrollView: View {
                     }
                     Spacer()
                     Button("Future") {
-                        controller.scrollTo(YearMonth(year: 2500, month: 1), isAnimate: true)
+                        controller.scrollTo(YearMonth(year: 3000, month: 1), isAnimate: true)
                     }
                     Spacer()
                 }

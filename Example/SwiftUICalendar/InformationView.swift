@@ -54,49 +54,47 @@ struct InformationView: View {
 
     var body: some View {
         GeometryReader { reader in
-            VStack {
-                CalendarView(header: { week in
-                    GeometryReader { geometry in
-                        Text(week.shortString)
-                            .font(.subheadline)
-                            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
-                    }
-                }, component: { date in
-                    GeometryReader { geometry in
-                        VStack(alignment: .leading, spacing: 2) {
-                            if date.isToday {
-                                Text("\(date.day)")
-                                    .font(.system(size: 10, weight: .bold, design: .default))
-                                    .padding(4)
+            CalendarView(header: { week in
+                GeometryReader { geometry in
+                    Text(week.shortString)
+                        .font(.subheadline)
+                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                }
+            }, component: { date in
+                GeometryReader { geometry in
+                    VStack(alignment: .leading, spacing: 2) {
+                        if date.isToday {
+                            Text("\(date.day)")
+                                .font(.system(size: 10, weight: .bold, design: .default))
+                                .padding(4)
+                                .foregroundColor(.white)
+                                .background(Color.red.opacity(0.95))
+                                .cornerRadius(14)
+                        } else {
+                            Text("\(date.day)")
+                                .font(.system(size: 10, weight: .light, design: .default))
+                                .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
+                                .foregroundColor(getColor(date))
+                                .padding(4)
+                        }
+                        if let infos = informations[date] {
+                            ForEach(infos.indices) { index in
+                                let info = infos[index]
+                                Text(info.0)
+                                    .lineLimit(1)
                                     .foregroundColor(.white)
-                                    .background(Color.red.opacity(0.95))
-                                    .cornerRadius(14)
-                            } else {
-                                Text("\(date.day)")
-                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .font(.system(size: 8, weight: .bold, design: .default))
+                                    .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
+                                    .frame(width: geometry.size.width, alignment: .center)
+                                    .background(info.1.opacity(0.75))
+                                    .cornerRadius(4)
                                     .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
-                                    .foregroundColor(getColor(date))
-                                    .padding(4)
-                            }
-                            if let infos = informations[date] {
-                                ForEach(infos.indices) { index in
-                                    let info = infos[index]
-                                    Text(info.0)
-                                        .lineLimit(1)
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 8, weight: .bold, design: .default))
-                                        .padding(EdgeInsets(top: 2, leading: 4, bottom: 2, trailing: 4))
-                                        .frame(width: geometry.size.width, alignment: .center)
-                                        .background(info.1.opacity(0.75))
-                                        .cornerRadius(4)
-                                        .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
-                                }
                             }
                         }
-                        .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
                     }
-                })
-            }
+                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .topLeading)
+                }
+            })
         }
         .navigationBarTitle("Information")
     }
