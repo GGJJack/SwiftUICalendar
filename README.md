@@ -160,6 +160,7 @@ struct CalendarScrollView: View {
 <details>
 <summary>Show example code</summary>
 <p>
+
 ```swift
 
 struct EmbedHeaderView: View {
