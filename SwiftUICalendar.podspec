@@ -8,8 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftUICalendar'
-  s.version          = '0.1.3'
+  s.version          = '0.1.4'
   s.summary          = 'SwiftUI Simple calendar view'
+  s.swift_version = '4.0'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +19,9 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-  SwiftUI Simple calendar view
+  SwiftUI Simple Calendar View
+  
+  Installation
                        DESC
 
   s.homepage         = 'https://github.com/GGJJack/SwiftUICalendar'
