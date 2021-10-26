@@ -12,7 +12,6 @@ import SwiftUICalendar
 struct CalendarScrollView: View {
     
     @ObservedObject var controller: CalendarController = CalendarController()
-    @State var focusDate: YearMonth = YearMonth.current
     
     var body: some View {
         GeometryReader { reader in

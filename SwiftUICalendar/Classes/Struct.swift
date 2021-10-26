@@ -98,7 +98,7 @@ public struct YearMonth: Equatable {
         return components
     }
     
-    public func cellToDate(_ cellIndex: Int) -> YearMonthDay {
+    internal func cellToDate(_ cellIndex: Int) -> YearMonthDay {
         let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian)!
         var toDateComponent = DateComponents()
         toDateComponent.year = self.year

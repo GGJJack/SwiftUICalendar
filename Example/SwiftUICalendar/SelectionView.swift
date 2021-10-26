@@ -10,9 +10,7 @@ import SwiftUI
 import SwiftUICalendar
 
 struct SelectionView: View {
-    
     @ObservedObject var controller: CalendarController = CalendarController()
-
     @State var focusDate: YearMonthDay? = YearMonthDay.current
     
     var body: some View {
