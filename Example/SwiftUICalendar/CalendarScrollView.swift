@@ -23,11 +23,11 @@ struct CalendarScrollView: View {
                         controller.scrollTo(YearMonth(year: 1500, month: 1), isAnimate: true)
                     }
                     Spacer()
-                    Button("Not Ani") {
+                    Button("Today") {
                         controller.scrollTo(YearMonth.current, isAnimate: false)
                     }
                     Spacer()
-                    Button("Animate") {
+                    Button("Today Scroll") {
                         controller.scrollTo(YearMonth.current, isAnimate: true)
                     }
                     Spacer()
