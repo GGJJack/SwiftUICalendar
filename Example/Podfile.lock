@@ -1,0 +1,16 @@
+PODS:
+  - SwiftUICalendar (0.1.0)
+
+DEPENDENCIES:
+  - SwiftUICalendar (from `../`)
+
+EXTERNAL SOURCES:
+  SwiftUICalendar:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SwiftUICalendar: 6a5a887cb235da91628701a45cbfb58c7af3dbbd
+
+PODFILE CHECKSUM: 562a2851462e815457e72c107e0378d2c348b1c4
+
+COCOAPODS: 1.11.0.beta.2

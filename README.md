@@ -22,7 +22,7 @@ pod 'SwiftUICalendar'
 
 ## Author
 
-ggaljjak, hyojong6367@gmail.com
+GGJJack, ggaljjak.choi@gmail.com
 
 ## License
 

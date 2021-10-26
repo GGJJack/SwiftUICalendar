@@ -1,6 +1,6 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '14.0'
 
 target 'SwiftUICalendar_Example' do
   pod 'SwiftUICalendar', :path => '../'
