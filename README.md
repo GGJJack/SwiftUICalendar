@@ -20,8 +20,8 @@ import SwiftUICalendar
 
 ## Features
 
-- Infinite scrolling
-- Support horizontal and vertical scrolling
+- Infinite scroll
+- Support horizontal and vertical scroll
 - Full custom calendar cell
 - Pager lock
 
