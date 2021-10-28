@@ -20,9 +20,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SwiftUICalendar",
-            dependencies: []),
-        .testTarget(
-            name: "SwiftUICalendarTests",
-            dependencies: ["SwiftUICalendar"]),
+            dependencies: [],
+            path: "Sources/SwiftUICalendar/Classes"
+        ),
+        //.testTarget(
+        //    name: "SwiftUICalendarTests",
+        //    dependencies: ["SwiftUICalendar"]),
     ]
 )
