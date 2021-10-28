@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SwiftUICalendar'
-  s.version          = '0.1.6'
+  s.version          = '0.1.12'
   s.summary          = 'SwiftUI Simple calendar view'
   s.swift_version = '4.0'
 
