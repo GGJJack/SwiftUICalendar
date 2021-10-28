@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 public enum Week: Int, CaseIterable {
     case sun = 0
