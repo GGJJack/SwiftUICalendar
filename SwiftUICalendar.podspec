@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
 
   s.ios.deployment_target = '14.0'
 
-  s.source_files = 'SwiftUICalendar/Classes/**/*'
+  s.source_files = 'Sources/SwiftUICalendar/Classes/**/*'
   
   # s.resource_bundles = {
   #   'SwiftUICalendar' => ['SwiftUICalendar/Assets/*.png']
