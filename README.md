@@ -6,6 +6,18 @@
 
 ## Installation
 
+### [Swift Package Manager](https://swift.org/package-manager/)
+
+- From url : `https://github.com/GGJJack/SwiftUICalendar`
+
+or
+
+- Package.swift
+
+```swift
+.package(name: "BottomSheet", url: "https://github.com/GGJJack/SwiftUICalendar", from: "0.1.12")
+```
+
 ### [CocoaPods](https://cocoapods.org)
 
 ```ruby
