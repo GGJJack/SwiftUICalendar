@@ -40,6 +40,7 @@ public class CalendarController: ObservableObject {
                     self.internalYearMonth = self.internalYearMonth.addMonth(value: move)
                     self.yearMonth = self.internalYearMonth
                     self.position = self.center
+                    self.objectWillChange.send()
                 }
             }
             .store(in: &cancellables)
@@ -53,6 +54,7 @@ public class CalendarController: ObservableObject {
         self.yearMonth = yearMonth
         self.internalYearMonth = yearMonth
         self.position = self.center
+        self.objectWillChange.send()
     }
     
     public func scrollTo(year: Int, month: Int, isAnimate: Bool = true) {
@@ -70,14 +72,17 @@ public class CalendarController: ObservableObject {
                 self.internalYearMonth = yearMonth.addMonth(value: -self.center + 1)
                 diff = self.max - 1
             }
+            self.objectWillChange.send()
             withAnimation { [weak self] in
                 if let self = self {
                     self.position = diff
+                    self.objectWillChange.send()
                 }
             }
         } else {
             self.internalYearMonth = yearMonth
             self.yearMonth = yearMonth
+            self.objectWillChange.send()
         }
     }
 }
