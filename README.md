@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/cocoapods/l/SwiftUICalendar.svg?style=flat)](https://cocoapods.org/pods/SwiftUICalendar)
 [![Platform](https://img.shields.io/cocoapods/p/SwiftUICalendar.svg?style=flat)](https://cocoapods.org/pods/SwiftUICalendar)
 
+SwiftUICalendar is calendar view for SwiftUI
+
 ## Installation
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
