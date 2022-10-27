@@ -24,6 +24,9 @@ struct MainView: View {
                 NavigationLink(destination: EmbedHeaderView()) {
                     Text("Embed Header")
                 }
+                NavigationLink(destination: StartWeekOnView()) {
+                    Text("Start week on monday")
+                }
                 NavigationLink(destination: InformationView()) {
                     Text("Information")
                 }

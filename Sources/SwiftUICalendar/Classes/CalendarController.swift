@@ -20,10 +20,10 @@ public class CalendarController: ObservableObject {
     internal let max: Int = Global.MAX_PAGE
     internal let center: Int = Global.CENTER_PAGE
     internal let scrollDetector: CurrentValueSubject<CGFloat, Never>
+    internal let startWeekOn: Week
     internal var cancellables = Set<AnyCancellable>()
-    internal let startWeekOn: Week = Week.sun
     
-    public init(_ yearMonth: YearMonth = .current, orientation: Orientation = .horizontal, isLocked: Bool = false) {
+    public init(_ yearMonth: YearMonth = .current, orientation: Orientation = .horizontal, isLocked: Bool = false, startWeekOn: Week = Week.sun) {
         let detector = CurrentValueSubject<CGFloat, Never>(0)
         
         self.scrollDetector = detector
@@ -31,6 +31,7 @@ public class CalendarController: ObservableObject {
         self.yearMonth = yearMonth
         self.orientation = orientation
         self.isLocked = isLocked
+        self.startWeekOn = startWeekOn
         
         detector
             .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)

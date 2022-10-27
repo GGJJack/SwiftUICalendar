@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F78561290A1B5400E2F055 /* StartWeekOnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F78560290A1B5400E2F055 /* StartWeekOnView.swift */; };
 		2F1877712727964400A6987F /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1877702727964400A6987F /* InformationView.swift */; };
 		2F1877812727E8E300A6987F /* InformationWithSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1877802727E8E300A6987F /* InformationWithSelectionView.swift */; };
 		2F41278A2721092300336C8C /* BasicUseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4127892721092300336C8C /* BasicUseView.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04F78560290A1B5400E2F055 /* StartWeekOnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartWeekOnView.swift; sourceTree = "<group>"; };
 		1529C6D412355F8136F54624 /* SwiftUICalendar.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SwiftUICalendar.podspec; path = ../SwiftUICalendar.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1D9008D491DE126083E4B2C8 /* Pods_SwiftUICalendar_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftUICalendar_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F1877702727964400A6987F /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				2F1877702727964400A6987F /* InformationView.swift */,
 				2F8BE218272787B500410651 /* SelectionView.swift */,
 				2F1877802727E8E300A6987F /* InformationWithSelectionView.swift */,
+				04F78560290A1B5400E2F055 /* StartWeekOnView.swift */,
 			);
 			name = Samples;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			files = (
 				2F1877712727964400A6987F /* InformationView.swift in Sources */,
 				2F1877812727E8E300A6987F /* InformationWithSelectionView.swift in Sources */,
+				04F78561290A1B5400E2F055 /* StartWeekOnView.swift in Sources */,
 				2F41278E2721093800336C8C /* EmbedHeaderView.swift in Sources */,
 				2F41278C2721092F00336C8C /* CalendarScrollView.swift in Sources */,
 				2F41278A2721092300336C8C /* BasicUseView.swift in Sources */,
