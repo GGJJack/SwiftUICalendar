@@ -48,9 +48,9 @@ public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
                     ForEach(0..<(controller.columnCount * (controller.rowCount + (isHasHeader ? 1 : 0))), id: \.self) { j in
                         GeometryReader { geometry in
                             if isHasHeader && j < controller.columnCount {
-                                header(Week.allCases[j])
+                                header(Week.allCases[(j + controller.startWeekOn.rawValue) % Week.allCases.count])
                             } else {
-                                let date = yearMonth.cellToDate(j - (isHasHeader ? 7 : 0))
+                                let date = yearMonth.cellToDate(j - (isHasHeader ? 7 : 0), startWeekOn: controller.startWeekOn)
                                 self.component(date)
                             }
                         }
@@ -62,7 +62,7 @@ public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
         }
     }
     
-    func calculateCellHeight(_ index: Int, geometry: GeometryProxy) -> CGFloat {
+    private func calculateCellHeight(_ index: Int, geometry: GeometryProxy) -> CGFloat {
         if !isHasHeader {
             return geometry.size.height / CGFloat(controller.rowCount)
         }

@@ -21,6 +21,7 @@ public class CalendarController: ObservableObject {
     internal let center: Int = Global.CENTER_PAGE
     internal let scrollDetector: CurrentValueSubject<CGFloat, Never>
     internal var cancellables = Set<AnyCancellable>()
+    internal let startWeekOn: Week = Week.sun
     
     public init(_ yearMonth: YearMonth = .current, orientation: Orientation = .horizontal, isLocked: Bool = false) {
         let detector = CurrentValueSubject<CGFloat, Never>(0)
