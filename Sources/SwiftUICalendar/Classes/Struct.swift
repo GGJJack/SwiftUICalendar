@@ -115,8 +115,14 @@ public struct YearMonth: Equatable {
         toDateComponent.day = 1
         let toDate = gregorianCalendar.date(from: toDateComponent)!
         let weekday = Calendar.current.component(.weekday, from: toDate) // 1Sun, 2Mon, 3Tue, 4Wed, 5Thu, 6Fri, 7Sat
+
+        var startWeekValue = cellIndex - weekday + 1 + startWeekOn.rawValue
+        if 0 < -weekday + 1 + startWeekOn.rawValue {
+            startWeekValue -= 7
+        }
+        
         var components = DateComponents()
-        components.day = cellIndex - weekday + 1 + startWeekOn.rawValue
+        components.day = startWeekValue
         let addedDate = Calendar.current.date(byAdding: components, to: toDate)!
         let year = Calendar.current.component(.year, from: addedDate)
         let month = Calendar.current.component(.month, from: addedDate)
