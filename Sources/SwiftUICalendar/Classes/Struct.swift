@@ -127,7 +127,7 @@ public struct YearMonth: Equatable {
     }
 }
 
-public struct YearMonthDay: Equatable {
+public struct YearMonthDay: Equatable, Hashable {
     public let year: Int
     public let month: Int
     public let day: Int
