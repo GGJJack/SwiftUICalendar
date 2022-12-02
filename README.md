@@ -17,7 +17,7 @@ or
 - Package.swift
 
 ```swift
-.package(name: "SwiftUICalendar", url: "https://github.com/GGJJack/SwiftUICalendar", from: "0.1.12")
+.package(name: "SwiftUICalendar", url: "https://github.com/GGJJack/SwiftUICalendar", from: "0.1.13")
 ```
 
 ### [CocoaPods](https://cocoapods.org)
