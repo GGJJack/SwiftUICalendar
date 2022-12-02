@@ -65,6 +65,9 @@ struct CalendarScrollView: View {
                     }
                 }
                 .navigationBarTitle("Calendar Scroll")
+                // .onChange(of: controller.yearMonth) { yearMonth in // If you want to detect date change
+                //     print(yearMonth)
+                // }
             }
         }
     }

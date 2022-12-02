@@ -158,6 +158,9 @@ struct CalendarScrollView: View {
                     }
                 }
                 .navigationBarTitle("Calendar Scroll")
+                // .onChange(of: controller.yearMonth) { yearMonth in // If you want to detect date change
+                //     print(yearMonth)
+                // }
             }
         }
     }
@@ -532,7 +535,16 @@ struct InformationWithSelectionView: View {
 </p>
 </details>
 
+### Date change detection
 
+```Swift
+CalendarView(controller) { date in
+ ....
+}
+.onChange(of: controller.yearMonth) { yearMonth in
+    print(yearMonth)
+}
+```
 
 ## Struct
 
