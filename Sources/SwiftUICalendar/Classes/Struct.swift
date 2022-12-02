@@ -215,5 +215,11 @@ public struct YearMonthDay: Equatable, Hashable {
         new.second = 0
         return Calendar.current.dateComponents([.day], from: Calendar.current.date(from: origin)!, to: Calendar.current.date(from: new)!).month!
     }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.year)
+        hasher.combine(self.month)
+        hasher.combine(self.day)
+    }
 }
 

@@ -73,7 +73,7 @@ struct InformationWithSelectionView: View {
                                     .padding(4)
                             }
                             if let infos = informations[date] {
-                                ForEach(infos.indices) { index in
+                                ForEach(infos.indices, id: \.self) { index in
                                     let info = infos[index]
                                     if focusInfo != nil {
                                         Rectangle()

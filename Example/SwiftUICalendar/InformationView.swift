@@ -9,14 +9,6 @@
 import SwiftUI
 import SwiftUICalendar
 
-extension YearMonthDay: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(self.year)
-        hasher.combine(self.month)
-        hasher.combine(self.day)
-    }
-}
-
 struct InformationView: View {
     
     var informations = [YearMonthDay: [(String, Color)]]()
@@ -78,7 +70,7 @@ struct InformationView: View {
                                 .padding(4)
                         }
                         if let infos = informations[date] {
-                            ForEach(infos.indices) { index in
+                            ForEach(infos.indices, id: \.self) { index in
                                 let info = infos[index]
                                 Text(info.0)
                                     .lineLimit(1)
