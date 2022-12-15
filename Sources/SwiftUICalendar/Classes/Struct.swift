@@ -41,7 +41,7 @@ public enum HeaderSize {
     case fixHeight(CGFloat)
 }
 
-public struct YearMonth: Equatable {
+public struct YearMonth: Equatable, Hashable {
     public let year: Int
     public let month: Int
     
@@ -105,6 +105,11 @@ public struct YearMonth: Equatable {
         components.year = self.year
         components.month = self.month
         return components
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.year)
+        hasher.combine(self.month)
     }
     
     internal func cellToDate(_ cellIndex: Int) -> YearMonthDay {
