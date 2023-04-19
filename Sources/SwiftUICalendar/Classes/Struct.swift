@@ -107,7 +107,7 @@ public struct YearMonth: Equatable {
         return components
     }
     
-    internal func cellToDate(_ cellIndex: Int) -> YearMonthDay {
+    internal func cellToDate(_ cellIndex: Int, startWithMonday: Bool) -> YearMonthDay {
         let gregorianCalendar = NSCalendar(calendarIdentifier: .gregorian)!
         var toDateComponent = DateComponents()
         toDateComponent.year = self.year
@@ -116,7 +116,7 @@ public struct YearMonth: Equatable {
         let toDate = gregorianCalendar.date(from: toDateComponent)!
         let weekday = Calendar.current.component(.weekday, from: toDate) // 1Sun, 2Mon, 3Tue, 4Wed, 5Thu, 6Fri, 7Sat
         var components = DateComponents()
-        components.day = cellIndex - weekday + 1
+        components.day = cellIndex - weekday + (!startWithMonday ? 1 : weekday == 1 ? (-5) : 2)
         let addedDate = Calendar.current.date(byAdding: components, to: toDate)!
         let year = Calendar.current.component(.year, from: addedDate)
         let month = Calendar.current.component(.month, from: addedDate)
