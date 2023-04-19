@@ -18,6 +18,9 @@ struct MainView: View {
                 NavigationLink(destination: BasicUseView()) {
                     Text("Basic use")
                 }
+                NavigationLink(destination: StartWithMondayView()) {
+                    Text("Start With Monday")
+                }
                 NavigationLink(destination: CalendarScrollView()) {
                     Text("Calendar Scroll")
                 }
