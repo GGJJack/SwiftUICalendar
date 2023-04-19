@@ -16,12 +16,15 @@ public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
     private var headerSize: HeaderSize
     @ObservedObject private var controller: CalendarController
     private let isHasHeader: Bool
+    private var startWithMonday: Bool
     
     public init(
         _ controller: CalendarController = CalendarController(),
+        startWithMonday: Bool = false,
         @ViewBuilder component: @escaping (YearMonthDay) -> CalendarCell
     ) where HeaderCell == EmptyView {
         self.controller = controller
+        self.startWithMonday = startWithMonday
         self.header = { _ in nil }
         self.component = component
         self.isHasHeader = false
@@ -30,11 +33,13 @@ public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
     
     public init(
         _ controller: CalendarController = CalendarController(),
+        startWithMonday: Bool = false,
         headerSize: HeaderSize = .fixHeight(40),
         @ViewBuilder header: @escaping (Week) -> HeaderCell,
         @ViewBuilder component: @escaping (YearMonthDay) -> CalendarCell
     ) {
         self.controller = controller
+        self.startWithMonday = startWithMonday
         self.header = header
         self.component = component
         self.isHasHeader = true
@@ -48,9 +53,9 @@ public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
                     ForEach(0..<(controller.columnCount * (controller.rowCount + (isHasHeader ? 1 : 0))), id: \.self) { j in
                         GeometryReader { geometry in
                             if isHasHeader && j < controller.columnCount {
-                                header(Week.allCases[j])
+                                header(Week.allCases[!self.startWithMonday ? j : j < 6 ? j + 1 : 0])
                             } else {
-                                let date = yearMonth.cellToDate(j - (isHasHeader ? 7 : 0))
+                                let date = yearMonth.cellToDate(j - (isHasHeader ? 7 : 0), startWithMonday: startWithMonday)
                                 self.component(date)
                             }
                         }

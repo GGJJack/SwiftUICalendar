@@ -10,11 +10,11 @@ SwiftUICalendar is calendar view for SwiftUI
 
 ### [Swift Package Manager](https://swift.org/package-manager/)
 
-- From url : `https://github.com/GGJJack/SwiftUICalendar`
+-   From url : `https://github.com/GGJJack/SwiftUICalendar`
 
 or
 
-- Package.swift
+-   Package.swift
 
 ```swift
 .package(name: "SwiftUICalendar", url: "https://github.com/GGJJack/SwiftUICalendar", from: "0.1.13")
@@ -34,10 +34,11 @@ import SwiftUICalendar
 
 ## Features
 
-- Infinite scroll
-- Support horizontal and vertical scroll
-- Full custom calendar cell
-- Pager lock
+-   Infinite scroll
+-   Support horizontal and vertical scroll
+-   Full custom calendar cell
+-   Pager lock
+-   Starting the week with Sunday or Monday
 
 ## Example
 
@@ -60,7 +61,7 @@ CalendarView() { date in
 ```swift
 struct BasicUseView: View {
     @ObservedObject var controller: CalendarController = CalendarController(orientation: .vertical)
-    
+
     var body: some View {
         GeometryReader { reader in
             VStack(alignment: .center, spacing: 0) {
@@ -116,7 +117,7 @@ struct BasicUseView: View {
 ```swift
 struct CalendarScrollView: View {
     @ObservedObject var controller: CalendarController = CalendarController()
-    
+
     var body: some View {
         GeometryReader { reader in
             VStack(alignment: .center, spacing: 0) {
@@ -181,7 +182,7 @@ struct CalendarScrollView: View {
 ```swift
 
 struct EmbedHeaderView: View {
-    
+
     @ObservedObject var controller: CalendarController = CalendarController()
 
     var body: some View {
@@ -245,7 +246,7 @@ extension YearMonthDay: Hashable {
 
 struct InformationView: View {
     var informations = [YearMonthDay: [(String, Color)]]()
-    
+
     init() {
         var date = YearMonthDay.current
         informations[date] = []
@@ -255,11 +256,11 @@ struct InformationView: View {
         date = date.addDay(value: 3)
         informations[date] = []
         informations[date]?.append(("Test", Color.pink))
-        
+
         date = date.addDay(value: 8)
         informations[date] = []
         informations[date]?.append(("Jack", Color.green))
-        
+
         date = date.addDay(value: 5)
         informations[date] = []
         informations[date]?.append(("Home", Color.red))
@@ -267,7 +268,7 @@ struct InformationView: View {
         date = date.addDay(value: -23)
         informations[date] = []
         informations[date]?.append(("Meet at 8, Home", Color.purple))
-        
+
         date = date.addDay(value: -5)
         informations[date] = []
         informations[date]?.append(("Home", Color.yellow))
@@ -325,7 +326,7 @@ struct InformationView: View {
         }
         .navigationBarTitle("Information")
     }
-    
+
     private func getColor(_ date: YearMonthDay) -> Color {
         if date.dayOfWeek == .sun {
             return Color.red
@@ -354,7 +355,7 @@ struct InformationView: View {
 struct SelectionView: View {
     @ObservedObject var controller: CalendarController = CalendarController()
     @State var focusDate: YearMonthDay? = YearMonthDay.current
-    
+
     var body: some View {
         GeometryReader { reader in
             VStack {
@@ -413,11 +414,11 @@ struct InformationWithSelectionView: View {
         date = date.addDay(value: 3)
         informations[date] = []
         informations[date]?.append(("Test", Color.pink))
-        
+
         date = date.addDay(value: 8)
         informations[date] = []
         informations[date]?.append(("Jack", Color.green))
-        
+
         date = date.addDay(value: 5)
         informations[date] = []
         informations[date]?.append(("Home", Color.red))
@@ -425,7 +426,7 @@ struct InformationWithSelectionView: View {
         date = date.addDay(value: -23)
         informations[date] = []
         informations[date]?.append(("Meet at 8, Home", Color.purple))
-        
+
         date = date.addDay(value: -5)
         informations[date] = []
         informations[date]?.append(("Home", Color.yellow))
@@ -518,7 +519,7 @@ struct InformationWithSelectionView: View {
         }
         .navigationBarTitle("Info + Select")
     }
-    
+
     private func getColor(_ date: YearMonthDay) -> Color {
         if date.dayOfWeek == .sun {
             return Color.red
@@ -546,6 +547,114 @@ CalendarView(controller) { date in
 }
 ```
 
+</p>
+</details>
+
+### Start with Monday
+
+![Basic Use](./img/start_monday.gif?raw=true)
+
+<details>
+<summary>Show example code</summary>
+<p>
+
+```swift
+
+struct StartMondayView: View {
+    @ObservedObject var controller: CalendarController = CalendarController()
+
+    var body: some View {
+        GeometryReader { reader in
+            VStack {
+                Text("\(controller.yearMonth.monthShortString), \(String(controller.yearMonth.year))")
+                    .font(.title)
+                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+
+                CalendarView(controller, startWithMonday: true, headerSize: .fixHeight(50.0)) { week in
+                    Text("\(week.shortString)")
+                        .font(.headline)
+                        .frame(width: reader.size.width / 7)
+                } component: { date in
+                    GeometryReader { geometry in
+                        if date.isToday {
+                            Circle()
+                                .padding(4)
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                .foregroundColor(.orange)
+                            Text("\(date.day)")
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                .font(.system(size: 10, weight: .bold, design: .default))
+                                .foregroundColor(.white)
+                        } else {
+                            Text("\(date.day)")
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                .font(.system(size: 10, weight: .light, design: .default))
+                                .foregroundColor(.black)
+                                .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+</p>
+</details>
+
+<details>
+<summary>Show example code</summary>
+<p>
+
+```swift
+
+struct StartMondayView: View {
+    @ObservedObject var controller: CalendarController = CalendarController()
+
+    var body: some View {
+        GeometryReader { reader in
+            VStack {
+                HStack(alignment: .center, spacing: 0) {
+                    ForEach(0..<7, id: \.self) { i in
+                        Text(DateFormatter().shortWeekdaySymbols[i < 6 ? i + 1 : 0])
+                            .font(.headline)
+                            .frame(width: reader.size.width / 7)
+                    }
+                }
+                CalendarView(controller, startWithMonday: true, headerSize: .fixHeight(50.0)) { week in
+                    Text("\(week.shortString)")
+                        .font(.headline)
+                        .frame(width: reader.size.width / 7)
+                } component: { date in
+                    GeometryReader { geometry in
+                        if date.isToday {
+                            Circle()
+                                .padding(4)
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                .foregroundColor(.orange)
+                            Text("\(date.day)")
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                .font(.system(size: 10, weight: .bold, design: .default))
+                                .foregroundColor(.white)
+                        } else {
+                            Text("\(date.day)")
+                                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                .font(.system(size: 10, weight: .light, design: .default))
+                                .foregroundColor(.black)
+                                .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+</p>
+</details>
+
 ## Struct
 
 ### CalendarView
@@ -554,19 +663,21 @@ CalendarView(controller) { date in
 public struct CalendarView<CalendarCell: View, HeaderCell: View>: View {
     public init(
         _ controller: CalendarController = CalendarController(),
+        startWithMonday: Bool = false,
         @ViewBuilder component: @escaping (YearMonthDay) -> CalendarCell
     ) {
         ...
     }
     public init(
         _ controller: CalendarController = CalendarController(),
+        startWithMonday: Bool = false,
         headerSize: HeaderSize = .fixHeight(40),
         @ViewBuilder header: @escaping (Week) -> HeaderCell,
         @ViewBuilder component: @escaping (YearMonthDay) -> CalendarCell
     ) {
         ...
     }
-    
+
     ...
 }
 ```
@@ -586,11 +697,11 @@ public enum HeaderSize {
 ```Swift
 public class CalendarController: ObservableObject {
     public init(
-        _ yearMonth: YearMonth = .current, 
+        _ yearMonth: YearMonth = .current,
         orientation: Orientation = .horizontal,
         isLocked: Bool = false
     )
-    
+
     ...
 }
 
@@ -619,9 +730,9 @@ controller.isLocked = true
 public struct YearMonth: Equatable {
     public let year: Int
     public let month: Int
-    
+
     public init(year: Int, month: Int) { ... }
-    
+
     ...
 }
 
@@ -646,11 +757,11 @@ public struct YearMonthDay: Equatable {
     public let month: Int
     public let day: Int
     public let isFocusYearMonth: Bool?
-    
+
     public init(year: Int, month: Int, day: Int) { ... }
-        
+
     public init(year: Int, month: Int, day: Int, isFocusYearMonth: Bool) { ... }
-    
+
     ...
 }
 
@@ -681,7 +792,7 @@ public enum Week: Int, CaseIterable {
     case thu = 4
     case fri = 5
     case sat = 6
-    
+
     public var shortString: String // Sun, Mon, Tue, Wed, Thu, Fri, Sat
 }
 ```
