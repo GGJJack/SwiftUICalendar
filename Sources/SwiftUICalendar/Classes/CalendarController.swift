@@ -11,14 +11,14 @@ import Combine
 public class CalendarController: ObservableObject {
     @Published public var yearMonth: YearMonth
     @Published public var isLocked: Bool
-    @Published internal var position: Int = Global.CENTER_PAGE
+    @Published internal var position: Int
     @Published internal var internalYearMonth: YearMonth
     
     internal let orientation: Orientation
     internal let columnCount = 7
     internal let rowCount = 6
-    internal let max: Int = Global.MAX_PAGE
-    internal let center: Int = Global.CENTER_PAGE
+    internal let max: Int
+    internal let center: Int
     internal let scrollDetector: CurrentValueSubject<CGFloat, Never>
     internal var cancellables = Set<AnyCancellable>()
     
@@ -30,6 +30,12 @@ public class CalendarController: ObservableObject {
         self.yearMonth = yearMonth
         self.orientation = orientation
         self.isLocked = isLocked
+        
+        self.max = 3
+        
+        // for tab positioning
+        self.center = 1
+        self.position = 1
         
         detector
             .debounce(for: .seconds(0.2), scheduler: DispatchQueue.main)
