@@ -35,6 +35,7 @@ import SwiftUICalendar
 ## Features
 
 -   Infinite scroll
+-   Date range limited scroll
 -   Support horizontal and vertical scroll
 -   Full custom calendar cell
 -   Pager lock
@@ -652,6 +653,102 @@ struct StartMondayView: View {
 }
 ```
 
+</p>
+</details>
+
+### Limit Date Range 
+
+![Limit date range](./img/limit_date_range?raw=true)
+<details>
+<summary>Show example code</summary>
+<p>
+```swift
+struct LimitScrollRange: View {
+    @ObservedObject var controller: CalendarController
+    private let range: ClosedRange<YearMonth>
+    
+    init() {
+        let yearMonth = YearMonth.current
+        range = yearMonth.addMonth(value: -5)...yearMonth.addMonth(value: 5)        
+        self.controller = .init(yearMonth, orientation: .horizontal, dateRange: range)
+    }
+    
+    var body: some View {
+        GeometryReader { reader in
+            VStack(alignment: .center, spacing: 0) {
+                Text("\(controller.yearMonth.monthShortString), \(String(controller.yearMonth.year))")
+                    .font(.title)
+                    .padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+                
+                HStack(alignment: .center, spacing: 0) {
+                    Spacer()
+                    Button("Drag Lock") {
+                        controller.isLocked = true
+                    }
+                    Spacer()
+                    Button("Drag Unlock") {
+                        controller.isLocked = false
+                    }
+                    Spacer()
+                }
+                
+                HStack {
+                    Spacer()
+                    Button("Lower") {
+                        controller.scrollTo(range.lowerBound)
+                    }
+                    Spacer()
+                    
+                    Button("Today Fast") {
+                        controller.scrollTo(.current, isAnimate: false)
+                    }
+                    Spacer()
+                    
+                    Button("Today") {
+                        controller.scrollTo(.current)
+                    }
+                    Spacer()
+                    
+                    Button("Upper") {
+                        controller.scrollTo(range.upperBound)
+                    }
+                    Spacer()
+                }
+                
+                HStack(alignment: .center, spacing: 0) {
+                    ForEach(0..<7, id: \.self) { i in
+                        Text(DateFormatter().shortWeekdaySymbols[i])
+                            .font(.headline)
+                            .frame(width: reader.size.width / 7)
+                    }
+                }
+                CalendarView(controller) { date in
+                    GeometryReader { geometry in
+                        ZStack(alignment: .center) {
+                            if date.isToday {
+                                Circle()
+                                    .padding(4)
+                                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                    .foregroundColor(.orange)
+                                Text("\(date.day)")
+                                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                    .font(.system(size: 10, weight: .bold, design: .default))
+                                    .foregroundColor(.white)
+                            } else {
+                                Text("\(date.day)")
+                                    .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+                                    .font(.system(size: 10, weight: .light, design: .default))
+                                    .opacity(date.isFocusYearMonth == true ? 1 : 0.4)
+                            }
+                        }
+                    }
+                }
+                .navigationBarTitle("Limit Scroll Range")
+            }
+        }
+    }
+}
+```
 </p>
 </details>
 

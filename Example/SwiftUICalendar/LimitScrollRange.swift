@@ -14,11 +14,11 @@ struct LimitScrollRange: View {
     
     init() {
         let yearMonth = YearMonth.current
-        //range = yearMonth.addMonth(value: -5)...yearMonth.addMonth(value: 5)
+        range = yearMonth.addMonth(value: -5)...yearMonth.addMonth(value: 5)
         
         // for one way ranges
         // range = yearMonth.addMonth(value: -6)...yearMonth
-        range = yearMonth...yearMonth.addMonth(value: 6)
+        // range = yearMonth...yearMonth.addMonth(value: 6)
         
         self.controller = .init(yearMonth, orientation: .horizontal, dateRange: range)
     }
@@ -97,7 +97,6 @@ struct LimitScrollRange: View {
             }
         }
     }
-    
 }
 
 struct LimitScrollRange_Previews: PreviewProvider {
