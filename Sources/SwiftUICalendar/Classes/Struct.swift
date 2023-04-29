@@ -132,6 +132,24 @@ public struct YearMonth: Equatable, Hashable {
     }
 }
 
+// allow for usage within a Range<YearMonth>
+extension YearMonth: Comparable, Strideable {
+    public static func < (lhs: YearMonth, rhs: YearMonth) -> Bool {
+        guard let l = Calendar.current.date(from: lhs.toDateComponents()) else { return false }
+        guard let r = Calendar.current.date(from: rhs.toDateComponents()) else { return false }
+        return l < r
+    }
+    
+    public func distance(to other: YearMonth) -> Int {
+        diffMonth(value: other)
+    }
+    
+    public func advanced(by n: Int) -> YearMonth {
+        addMonth(value: n)
+    }
+    
+}
+
 public struct YearMonthDay: Equatable, Hashable {
     public let year: Int
     public let month: Int
