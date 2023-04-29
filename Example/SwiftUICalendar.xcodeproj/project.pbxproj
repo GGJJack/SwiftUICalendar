@@ -19,6 +19,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		68A314E129FC972D00293579 /* LimitScrollRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68A314E029FC972D00293579 /* LimitScrollRange.swift */; };
 		70CF4A532162E518B75370AB /* Pods_SwiftUICalendar_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58AFC65DC1653690BF0B4F96 /* Pods_SwiftUICalendar_Tests.framework */; };
 		F9DEDA2240F94F1B2C25BE97 /* Pods_SwiftUICalendar_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9008D491DE126083E4B2C8 /* Pods_SwiftUICalendar_Example.framework */; };
 /* End PBXBuildFile section */
@@ -58,6 +59,7 @@
 		607FACE51AFB9204008FA782 /* SwiftUICalendar_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUICalendar_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		68A314E029FC972D00293579 /* LimitScrollRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LimitScrollRange.swift; sourceTree = "<group>"; };
 		C61EDE4455EFAA021752CF52 /* Pods-SwiftUICalendar_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftUICalendar_Tests.debug.xcconfig"; path = "Target Support Files/Pods-SwiftUICalendar_Tests/Pods-SwiftUICalendar_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				2F1877702727964400A6987F /* InformationView.swift */,
 				2F8BE218272787B500410651 /* SelectionView.swift */,
 				2F1877802727E8E300A6987F /* InformationWithSelectionView.swift */,
+				68A314E029FC972D00293579 /* LimitScrollRange.swift */,
 			);
 			name = Samples;
 			sourceTree = "<group>";
@@ -364,6 +367,7 @@
 				2F41278A2721092300336C8C /* BasicUseView.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				68A314E129FC972D00293579 /* LimitScrollRange.swift in Sources */,
 				2F8BE219272787B500410651 /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

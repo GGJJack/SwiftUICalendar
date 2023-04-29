@@ -23,7 +23,7 @@ internal struct InfinitePagerView<Content: View>: View {
     var body: some View {
         drawTabView { geometry in
             ForEach(0..<controller.max, id: \.self) { i in
-                let yearMonth = controller.internalYearMonth.addMonth(value: i - Global.CENTER_PAGE)
+                let yearMonth = controller.internalYearMonth.addMonth(value: i - controller.center)
                 self.content(yearMonth, i).frame(width: geometry.size.width, height: geometry.size.height)
                     .background(GeometryReader {
                         Color.clear.preference(key: ScrollOffsetKey.self, value: (controller.orientation == .horizontal ? -$0.frame(in: .named("scroll")).origin.x : -$0.frame(in: .named("scroll")).origin.y))

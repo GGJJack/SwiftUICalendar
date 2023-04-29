@@ -18,6 +18,9 @@ struct MainView: View {
                 NavigationLink(destination: BasicUseView()) {
                     Text("Basic use")
                 }
+                NavigationLink(destination: LimitScrollRange()) {
+                    Text("Limited Scroll Range")
+                }
                 NavigationLink(destination: StartWithMondayView()) {
                     Text("Start With Monday")
                 }
